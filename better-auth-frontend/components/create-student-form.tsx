@@ -23,7 +23,6 @@ export function CreateStudentForm({
 }: React.ComponentProps<"div">) {
   const router = useRouter();
 
-  // Added 'lrn' to the state
   const [formData, setFormData] = useState({
     lrn: "",
     firstName: "",

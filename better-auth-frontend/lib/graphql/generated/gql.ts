@@ -15,11 +15,13 @@ import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-
  */
 type Documents = {
     "\n  mutation createStudent($createStudentInput: CreateStudentInput!) {\n    createStudent(createStudentInput: $createStudentInput) {\n      firstName\n    }\n  }\n": typeof types.CreateStudentDocument,
-    "\n  query GetStudents {\n    students {\n      id\n      firstName\n    }\n  }\n": typeof types.GetStudentsDocument,
+    "\n  mutation RemoveStudent($id: String!) {\n    removeStudent(id: $id) {\n      id\n    }\n  }\n": typeof types.RemoveStudentDocument,
+    "\n  query GetStudents {\n    students {\n      id\n      lrn\n      firstName\n      middleName\n      lastName\n      email\n      contactNo\n    }\n  }\n": typeof types.GetStudentsDocument,
 };
 const documents: Documents = {
     "\n  mutation createStudent($createStudentInput: CreateStudentInput!) {\n    createStudent(createStudentInput: $createStudentInput) {\n      firstName\n    }\n  }\n": types.CreateStudentDocument,
-    "\n  query GetStudents {\n    students {\n      id\n      firstName\n    }\n  }\n": types.GetStudentsDocument,
+    "\n  mutation RemoveStudent($id: String!) {\n    removeStudent(id: $id) {\n      id\n    }\n  }\n": types.RemoveStudentDocument,
+    "\n  query GetStudents {\n    students {\n      id\n      lrn\n      firstName\n      middleName\n      lastName\n      email\n      contactNo\n    }\n  }\n": types.GetStudentsDocument,
 };
 
 /**
@@ -43,7 +45,11 @@ export function gql(source: "\n  mutation createStudent($createStudentInput: Cre
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query GetStudents {\n    students {\n      id\n      firstName\n    }\n  }\n"): (typeof documents)["\n  query GetStudents {\n    students {\n      id\n      firstName\n    }\n  }\n"];
+export function gql(source: "\n  mutation RemoveStudent($id: String!) {\n    removeStudent(id: $id) {\n      id\n    }\n  }\n"): (typeof documents)["\n  mutation RemoveStudent($id: String!) {\n    removeStudent(id: $id) {\n      id\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query GetStudents {\n    students {\n      id\n      lrn\n      firstName\n      middleName\n      lastName\n      email\n      contactNo\n    }\n  }\n"): (typeof documents)["\n  query GetStudents {\n    students {\n      id\n      lrn\n      firstName\n      middleName\n      lastName\n      email\n      contactNo\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

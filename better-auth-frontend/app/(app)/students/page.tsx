@@ -5,11 +5,16 @@ import { GET_STUDENTS } from "@/lib/graphql/queries";
 import { columns, type Student } from "./column";
 
 export default async function StudentsPage() {
-  const { data } = await query({
+  const { data, error } = await query({
     query: GET_STUDENTS,
     fetchPolicy: "no-cache",
   });
-  const students = (data as { students: Student[] }).students;
+
+  if (error) {
+    console.error("GraphQL Error:", error);
+  }
+
+  const students = (data as { students: Student[] })?.students ?? [];
 
   return (
     <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">

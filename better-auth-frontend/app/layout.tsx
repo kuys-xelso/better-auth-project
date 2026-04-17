@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ApolloProvider } from "@/lib/apollo/provider";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans">
         <ApolloProvider>
           <TooltipProvider>{children}</TooltipProvider>
+          <Toaster richColors position="top-center" duration={3000} />
         </ApolloProvider>
       </body>
     </html>

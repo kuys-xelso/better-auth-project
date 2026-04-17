@@ -7,3 +7,11 @@ export const CREATE_STUDENT = gql(`
     }
   }
 `);
+
+export const DELETE_STUDENT_BY_ID = gql(`
+  mutation RemoveStudent($id: String!) {
+    removeStudent(id: $id) {
+      id
+    }
+  }
+`);

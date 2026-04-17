@@ -1,8 +1,8 @@
-import { CreateStudentForm } from "@/components/create-student-form";
 import { DataTable } from "@/components/data-table";
 import { query } from "@/lib/apollo/client";
 import { GET_STUDENTS } from "@/lib/graphql/queries";
 import { columns, type Student } from "./column";
+import { CreateStudentDialog } from "@/components/create-student-dialog";
 
 export default async function StudentsPage() {
   const { data, error } = await query({
@@ -19,7 +19,10 @@ export default async function StudentsPage() {
   return (
     <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
       <div className="px-4 lg:px-6">
-        <CreateStudentForm />
+        <p className="text-xl font-bold">Students Page</p>
+        <div className="flex justify-end">
+          <CreateStudentDialog />
+        </div>
         <div className="mt-4 text-sm text-muted-foreground">
           This is a demo application. The students you create here will not be
           saved and will be lost when you refresh the page.

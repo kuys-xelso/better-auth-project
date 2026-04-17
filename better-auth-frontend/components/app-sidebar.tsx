@@ -30,6 +30,7 @@ import {
   FileChartColumnIcon,
   FileIcon,
   CommandIcon,
+  ReceiptCentIcon,
 } from "lucide-react";
 
 const data = {
@@ -38,6 +39,7 @@ const data = {
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
+
   navMain: [
     {
       title: "Dashboard",
@@ -50,19 +52,24 @@ const data = {
       icon: <UsersIcon />,
     },
     {
-      title: "Analytics",
+      title: "Billing",
       url: "#",
-      icon: <ChartBarIcon />,
+      icon: <ReceiptCentIcon />,
     },
     {
-      title: "Projects",
+      title: "Archives",
       url: "#",
-      icon: <FolderIcon />,
+      icon: <FileTextIcon />,
     },
     {
-      title: "Team",
+      title: "Transactions",
       url: "#",
-      icon: <UsersIcon />,
+      icon: <FileTextIcon />,
+    },
+    {
+      title: "Reports",
+      icon: <FileChartColumnIcon />,
+      url: "#",
     },
   ],
   navClouds: [

@@ -15,3 +15,11 @@ export const DELETE_STUDENT_BY_ID = gql(`
     }
   }
 `);
+
+export const UPDATE_STUDENT_BY_ID = gql(`
+  mutation UpdateStudent($updateStudentInput: UpdateStudentInput!) {
+    updateStudent(updateStudentInput: $updateStudentInput) {
+      id
+    }
+  }
+`);

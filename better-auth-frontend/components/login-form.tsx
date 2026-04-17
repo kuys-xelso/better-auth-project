@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export function LoginForm({
   className,
@@ -42,7 +43,8 @@ export function LoginForm({
         onResponse: () => setIsLoading(false),
         onError: (ctx) => {
           // You can replace this with a toast notification
-          alert(ctx.error.message);
+          // alert(ctx.error.message);
+          toast.error(ctx.error.message);
         },
         onSuccess: () => {
           router.push("/dashboard");

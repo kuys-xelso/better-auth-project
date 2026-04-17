@@ -29,17 +29,22 @@ export type Student = {
   contactNo: string;
 };
 
+import { EditStudentSheet } from "@/components/edit-student-sheet";
+
 const ActionsCell = ({ student }: { student: Student }) => {
   const router = useRouter();
-  const [deleteStudent, { loading }] = useMutation(DELETE_STUDENT_BY_ID, {
-    onCompleted: () => {
-      toast.success("Student deleted successfully");
-      router.refresh();
+  const [deleteStudent, { loading: isDeleting }] = useMutation(
+    DELETE_STUDENT_BY_ID,
+    {
+      onCompleted: () => {
+        toast.success("Student deleted successfully");
+        router.refresh();
+      },
+      onError: (error: any) => {
+        toast.error(error.message || "Failed to delete student");
+      },
     },
-    onError: (error: any) => {
-      toast.error(error.message || "Failed to delete student");
-    },
-  });
+  );
 
   const handleDelete = async () => {
     await deleteStudent({
@@ -49,19 +54,23 @@ const ActionsCell = ({ student }: { student: Student }) => {
 
   return (
     <div className="flex gap-2">
-      <Button
-        variant="default"
-        size="sm"
-        className="bg-green-500 hover:bg-green-600"
-        onClick={() => console.log("Editing:", student.lrn)}
-      >
-        Edit
-      </Button>
+      <EditStudentSheet
+        student={student}
+        trigger={
+          <Button
+            variant="default"
+            size="sm"
+            className="bg-green-500 hover:bg-green-600"
+          >
+            Edit
+          </Button>
+        }
+      />
 
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button variant="destructive" size="sm" disabled={loading}>
-            {loading ? "Deleting..." : "Delete"}
+          <Button variant="destructive" size="sm" disabled={isDeleting}>
+            {isDeleting ? "Deleting..." : "Delete"}
           </Button>
         </AlertDialogTrigger>
         <AlertDialogContent>

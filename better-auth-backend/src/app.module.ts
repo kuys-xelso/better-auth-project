@@ -11,6 +11,7 @@ import { PrismaService } from './prisma/prisma.service';
 import { TestController } from './test.controller';
 import { PrismaModule } from './prisma/prisma.module';
 import { StudentModule } from './student/student.module';
+import { StrandsModule } from './strands/strands.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { StudentModule } from './student/student.module';
     UserModule,
     PrismaModule,
     StudentModule,
+    StrandsModule,
   ],
   providers: [AppService],
   controllers: [TestController],

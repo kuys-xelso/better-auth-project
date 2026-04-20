@@ -26,11 +26,18 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Strand {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 type Query {
   users: [User!]!
   user(id: String!): User!
   students: [Student!]!
   student(id: String!): Student!
+  strands: [Strand!]!
+  strand(id: Int!): Strand!
 }
 
 type Mutation {
@@ -40,6 +47,9 @@ type Mutation {
   createStudent(createStudentInput: CreateStudentInput!): Student!
   updateStudent(updateStudentInput: UpdateStudentInput!): Student!
   removeStudent(id: String!): Student!
+  createStrand(createStrandInput: CreateStrandInput!): Strand!
+  updateStrand(updateStrandInput: UpdateStrandInput!): Strand!
+  removeStrand(id: Int!): Strand!
 }
 
 input CreateUserInput {
@@ -72,4 +82,15 @@ input UpdateStudentInput {
   email: String
   contactNo: String
   id: String!
+}
+
+input CreateStrandInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateStrandInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }

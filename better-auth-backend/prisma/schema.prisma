@@ -92,3 +92,32 @@ model Student {
   @@map("students")
   @@schema("public")
 }
+
+model AcademicYears {
+  id          String   @id @default(uuid())
+  name        String
+  startDate   DateTime
+  endDate     DateTime
+  isCurrent   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([startDate])
+  @@unique([endDate])
+  @@map("academic_years")
+  @@schema("public")
+}
+
+model Strands {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([name])
+  @@map("strands")
+  @@schema("public")
+}
+
+
